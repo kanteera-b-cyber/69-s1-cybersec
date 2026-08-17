@@ -8,6 +8,8 @@ services:
       - POSTGRES_PASSWORD=123456
       - POSTGRES_USER=kanteera
       - POSTGRES_DB=kanteera
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
 
   admin:
     image: dpage/pgadmin4:8.8
@@ -17,6 +19,10 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=kanteera-b@rmutp.ac.th
       - PGADMIN_DEFAULT_PASSWORD=123456
+    volumes:
+      - data-pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
       
   app:
     image: prawee/strapi
@@ -33,3 +39,7 @@ services:
       DATABASE_NAME: kanteera
       DATABASE_USERNAME: kanteera
       DATABASE_PASSWORD: 123456
+
+volumes:
+  data-postgres:
+  data-pgadmin:
