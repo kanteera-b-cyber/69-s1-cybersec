@@ -1,0 +1,95 @@
+# REST
+
+## 1.Admin
+### 1.1 Login
+POST http://localhost:1337/admin/login
+Content-Type: application/json
+
+{
+    "email": "",
+    "password": "",
+    "rememberMe": false
+}
+
+
+### 1.2 Register
+POST http://localhost:1337/admin/auth/register
+Content-Type: application/json
+
+{
+    "firstname": "",
+    "lastname": "",
+    "email": "",
+    "password": ""
+}
+
+
+### 1.3 Forget Password
+POST http://localhost:1337/admin/forgot-password
+Content-Type: application/json
+
+{
+    "email": ""
+}
+
+
+### 1.4 Reset Password
+POST http://localhost:1337/admin/reset-password
+Content-Type: application/json
+
+{
+    "resetPasswordToken": "RESET_PASSWORD_CODE_FROM_API_RESPONSE",
+    "password": ""
+    "passwordConfirmation": ""
+}
+
+
+### 1.5 Profile
+GET http://localhost:1337/admin/users/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+
+## 2.User
+### 2.1 Login (User)
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+    "identifier": "",
+    "password": ""
+}
+
+### 2.2 register (User) one time for first time
+POST http://localhost:1337/api/auth/local/register
+Content-Type: application/json
+
+{
+    "username": "",
+    "email": "",
+    "password": ""
+}
+
+### 2.3 Forgot Password
+POST http://localhost:1337/api/auth/forgot-password
+Content-Type: application/json
+
+{
+    "email": ""
+}
+
+
+### 2.4 Reset Password
+POST http://localhost:1337/api/auth/reset-password
+Content-Type: application/json
+
+{
+    "password": "",
+    "passwordConfirmation": "",
+    "code": ""RESET_PASSWORD_CODE_FROM_API_RESPONSE"
+}
+
+### 2.5 Profile
+GET http://localhost:1337/api/users/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
